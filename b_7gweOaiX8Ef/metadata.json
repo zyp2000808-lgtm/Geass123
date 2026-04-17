@@ -1,0 +1,5 @@
+{
+  "name": "Creative 3D Portfolio",
+  "description": "A modern creative portfolio website with high-performance interactive 3D effects using React Three Fiber, GSAP, and Lenis.",
+  "requestFramePermissions": []
+}
