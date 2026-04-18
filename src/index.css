@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fluid Typography */
+  --font-size-fluid-h1: clamp(3rem, 10vw, 8rem);
+  --font-size-fluid-h2: clamp(2.25rem, 6vw, 4.5rem);
+  --font-size-fluid-h3: clamp(1.75rem, 4vw, 3rem);
+  --font-size-fluid-body: clamp(1rem, 1.2vw, 1.25rem);
+  --font-size-fluid-sm: 0.875rem;
+  --font-size-fluid-lg: clamp(1.25rem, 2.5vw, 2.25rem);
+  --font-size-fluid-xl: clamp(2rem, 5vw, 3.5rem);
+  
+  /* Fluid Spacing & Grid */
+  --spacing-fluid-section: clamp(4rem, 10vw, 10rem);
+  --spacing-fluid-container: clamp(1.5rem, 6vw, 7rem);
+  --spacing-fluid-gutter: clamp(1.5rem, 4vw, 4rem);
+  --spacing-fluid-stack: clamp(1rem, 1.5vw, 1.5rem);
+  
+  /* Layout Constraints */
+  --max-width-main: 1440px;
+  --max-width-content: 1200px;
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-zinc-50 antialiased selection:bg-white selection:text-black;
+    font-size: var(--font-size-fluid-body);
+    line-height: 1.5;
+  }
+
+  /* Avoid broad transition on layout-heavy elements to reduce scroll-time style recalculation. */
+  h1, h2, h3, h4 {
+    @apply transition-[font-size] duration-300 ease-out;
+  }
+
+  h1 { font-size: var(--font-size-fluid-h1); @apply font-bold tracking-tighter leading-[0.9]; }
+  h2 { font-size: var(--font-size-fluid-h2); @apply font-bold tracking-tight leading-[1.1]; }
+  h3 { font-size: var(--font-size-fluid-h3); @apply font-bold tracking-tight; }
+}
+
+/* Grid System Utilities */
+@utility grid-layout {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-fluid-gutter);
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@utility container-fluid {
+  width: 100%;
+  max-width: var(--max-width-main);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-fluid-container);
+  padding-right: var(--spacing-fluid-container);
+}
+
+@utility section-fluid {
+  padding-top: var(--spacing-fluid-section);
+  padding-bottom: var(--spacing-fluid-section);
+}
+
+@utility stack-fluid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-fluid-stack);
+}
+
+@utility text-fluid-h1 { font-size: var(--font-size-fluid-h1); }
+@utility text-fluid-h2 { font-size: var(--font-size-fluid-h2); }
+@utility text-fluid-h3 { font-size: var(--font-size-fluid-h3); }
+@utility text-fluid-body { font-size: var(--font-size-fluid-body); }
+@utility text-fluid-sm { font-size: var(--font-size-fluid-sm); }
+@utility text-fluid-lg { font-size: var(--font-size-fluid-lg); }
+@utility text-fluid-xl { font-size: var(--font-size-fluid-xl); }
+
+@utility py-fluid-section { 
+  padding-top: var(--spacing-fluid-section);
+  padding-bottom: var(--spacing-fluid-section);
+}
+@utility pb-fluid-section {
+  padding-bottom: var(--spacing-fluid-section);
+}
+@utility px-fluid-container {
+  padding-left: var(--spacing-fluid-container);
+  padding-right: var(--spacing-fluid-container);
+}
+@utility p-fluid-container {
+  padding: var(--spacing-fluid-container);
+}
+@utility gap-fluid-gutter {
+  gap: var(--spacing-fluid-gutter);
+}
+@utility gap-fluid-stack {
+  gap: var(--spacing-fluid-stack);
+}
